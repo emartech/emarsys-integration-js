@@ -81,6 +81,13 @@ class MessageHandlerNavigate extends AbstractMessageHandler {
         'service_path=/admin/profile/{admin_id}'
       ].join('&'),
 
+      'administrators/security-settings': [
+        'bootstrap.php?session_id={session_id}',
+        'r=service',
+        'service=user-management',
+        'service_path=/security-settings'
+      ].join('&'),
+
       'administrators/list': [
         'bootstrap.php?session_id={session_id}',
         'r=service',
