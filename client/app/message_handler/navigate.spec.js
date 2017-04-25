@@ -197,4 +197,24 @@ describe('Navigate Handler', function() {
       'mailstream=1'
     ].join('&'));
   });
+
+  it('navigates to create content blocks based campaign with proper params', function() {
+    messageHandler.handleMessage({
+      event: 'navigate',
+      data: {
+        target: 'email_campaigns/blocks/create',
+        params: {
+          mailstream: 1
+        }
+      },
+      source: {
+        integration_instance_id: 1
+      }
+    });
+
+    expect(fakeWindow.location.href).to.eql([
+      'bootstrap.php?r=contentBlocks/selector&session_id=SESSIONID',
+      'mailstream=1'
+    ].join('&'));
+  });
 });

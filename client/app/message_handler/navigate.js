@@ -28,6 +28,11 @@ class MessageHandlerNavigate extends AbstractMessageHandler {
         'mailstream={mailstream}'
       ].join('&'),
 
+      'email_campaigns/blocks/create': [
+        'bootstrap.php?r=contentBlocks/selector&session_id={session_id}',
+        'mailstream={mailstream}'
+      ].join('&'),
+
       'email_campaigns/edit': [
         'campaignmanager.php?session_id={session_id}',
         'action=content',
