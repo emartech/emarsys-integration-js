@@ -19,12 +19,7 @@ describe('Intercom TrackEvent handler', function() {
 
 
   it('should call Intercom upon receiving proper messages', function() {
-    const fakeIntercom = {
-      trackEvent: this.sandbox.stub(),
-      update: this.sandbox.stub()
-    };
-
-    fakeWindow.Intercom = fakeIntercom;
+    fakeWindow.Intercom = this.sandbox.stub();
 
     messageHandler.handleMessage({
       data: {
@@ -33,8 +28,8 @@ describe('Intercom TrackEvent handler', function() {
       }
     });
 
-    expect(fakeIntercom.trackEvent).to.have.been.calledWith('test-name', { testKey: 'testValue' });
-    expect(fakeIntercom.update).to.have.been.called;
+    expect(fakeWindow.Intercom).to.have.been.calledWith('trackEvent', 'test-name', { testKey: 'testValue' });
+    expect(fakeWindow.Intercom).to.have.been.calledWith('update');
   });
 
 });

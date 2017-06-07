@@ -11,8 +11,8 @@ class MessageHandlerUnloadInit extends AbstractMessageHandler {
   handleMessage(message) {
     const intercom = this.window.Intercom;
 
-    intercom.trackEvent(message.data.name, message.data.metadata);
-    intercom.update();
+    intercom('trackEvent', message.data.name, message.data.metadata);
+    intercom('update');
   }
 
 }
