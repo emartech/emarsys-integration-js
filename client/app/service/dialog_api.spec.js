@@ -81,13 +81,6 @@ describe('DialogApi', function() {
     });
   });
 
-  describe('#close', function() {
-    it('should look up e-dialog elements', function() {
-      dialogApi.close();
-      expect(fakeWindow.$).to.be.calledWith('e-dialog');
-    });
-  });
-
   describe('#generateMessageData', function() {
     beforeEach(function() {
       this.sandbox.stub(transmitter, 'messageToService');
