@@ -21,13 +21,15 @@ class Modal extends Dialog {
   render() {
     super.render();
 
-    let $eModal = $('e-dialog');
+    let $eModal = $(this._modal);
     $eModal.css('opacity', 0);
     $eModal.find('iframe').load(() => {
       this.window.setTimeout(() => {
         $eModal.css('opacity', 1);
       }, 0);
     });
+
+    return this._modal;
   }
 
   getAttributes() {

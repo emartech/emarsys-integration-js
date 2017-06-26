@@ -6,6 +6,7 @@ class Dialog {
     this.window = global;
     this.options = options;
     this.integrationInstanceId = Math.floor(Math.random() * 1000000000);
+    this._modal;
   }
 
   get dialogClass() {
@@ -13,8 +14,9 @@ class Dialog {
   }
 
   render() {
-    let $eModal = this.getHtml();
-    $eModal.open(this.getModalOptions());
+    this._modal = this.getHtml();
+    this._modal.open(this.getModalOptions());
+    return this._modal;
   }
 
   getModalOptions() {
@@ -28,9 +30,9 @@ class Dialog {
   }
 
   getHtml() {
-    let $eModal = document.createElement('e-dialog');
-    $eModal.className = this.dialogClass;
-    return $eModal;
+    const eDialog = document.createElement('e-dialog');
+    eDialog.className = this.dialogClass;
+    return eDialog;
   }
 
   cleanMessage(text) {

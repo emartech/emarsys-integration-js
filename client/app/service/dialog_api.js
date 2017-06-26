@@ -14,6 +14,7 @@ class DialogApi {
   constructor(api) {
     this.api = api;
     this.global = api.global;
+    this._modal = null;
 
     this.deferreds = {};
     this.confirmParams = {};
@@ -60,7 +61,7 @@ class DialogApi {
       this.confirmParams[message.data.dialogId] = message.data.params;
     }
 
-    this.getConfirmComponent(message).render();
+    this._modal = this.getConfirmComponent(message).render();
 
     if (message.source.integration_id === consts.EMARSYS_INTEGRATION_ID) {
       this.deferreds[message.data.dialogId] = this.global.$.Deferred(); // eslint-disable-line new-cap
@@ -86,15 +87,16 @@ class DialogApi {
   }
 
   modal(message) {
-    new ModalComponent(this.global, message).render();
+    this._modal = new ModalComponent(this.global, message).render();
   }
 
   close() {
-    this.global.$('e-dialog').remove();
+    this._modal.close();
   }
 
+
   _getParams() {
-    return JSON.parse(document.getElementsByTagName('e-dialog')[0].getAttribute('data-params'));
+    return JSON.parse(this._modal.getAttribute('data-params'));
   }
 
 }
