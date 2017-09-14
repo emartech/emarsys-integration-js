@@ -74,6 +74,13 @@ class MessageHandlerNavigate extends AbstractMessageHandler {
         'only_mailstreams={only_mailstreams}'
       ].join('&'),
 
+      'contact/edit': [
+        'userprofiles.php?session_id={session_id}',
+        'action=show',
+        'uid={uid}',
+        'sback={return_url}'
+      ].join('&'),
+
       'contact_lists/details': [
         'userprofiles.php?session_id={session_id}',
         'action=searchnlist',
