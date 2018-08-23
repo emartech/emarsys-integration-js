@@ -165,10 +165,16 @@ class MessageHandlerNavigate extends AbstractMessageHandler {
         'r=permissionSettings#/roles'
       ].join('&'),
 
-      'tactics': [
+      'tactics/list': [
         'bootstrap.php?session_id={session_id}',
         'r=tactics',
         'kpi={kpi}'
+      ].join('&'),
+
+      'tactics/details': [
+        'bootstrap.php?session_id={session_id}',
+        'r=tactics',
+        'id={id}'
       ].join('&')
     };
 

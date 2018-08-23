@@ -356,11 +356,11 @@ describe('Navigate Handler', function() {
     ].join('&'));
   });
 
-  it('navigates to Tactics page', function() {
+  it('navigates to Tactics list page', function() {
     messageHandler.handleMessage({
       event: 'navigate',
       data: {
-        target: 'tactics',
+        target: 'tactics/list',
         params: {
           kpi: 'foo'
         }
@@ -374,6 +374,27 @@ describe('Navigate Handler', function() {
       'bootstrap.php?session_id=SESSIONID',
       'r=tactics',
       'kpi=foo'
+    ].join('&'));
+  });
+
+  it('navigates to Tactics details page', function() {
+    messageHandler.handleMessage({
+      event: 'navigate',
+      data: {
+        target: 'tactics/details',
+        params: {
+          id: 'foo'
+        }
+      },
+      source: {
+        integration_instance_id: 1
+      }
+    });
+
+    expect(fakeWindow.location.href).to.eql([
+      'bootstrap.php?session_id=SESSIONID',
+      'r=tactics',
+      'id=foo'
     ].join('&'));
   });
 });
