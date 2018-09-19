@@ -19,6 +19,19 @@ describe('Navigate Handler', function() {
     messageHandler = new MessageHandler(fakeWindow, transmitter);
   });
 
+  const navigateTo = ({ target, params }) => {
+    messageHandler.handleMessage({
+      event: 'navigate',
+      data: {
+        target: target,
+        params
+      },
+      source: {
+        integration_instance_id: 1
+      }
+    });
+  };
+
   it('should listen to messages with event "navigate"', function() {
     expect(messageHandler.MESSAGE_EVENT).to.be.eql('navigate');
   });
@@ -399,16 +412,10 @@ describe('Navigate Handler', function() {
   });
 
   it('navigates to Mobile Engage push editor page', function() {
-    messageHandler.handleMessage({
-      event: 'navigate',
-      data: {
-        target: 'me_push/edit',
-        params: {
-          id: 'foo'
-        }
-      },
-      source: {
-        integration_instance_id: 1
+    navigateTo({
+      target: 'me_push/edit',
+      params: {
+        id: 'foo'
       }
     });
 
@@ -422,16 +429,10 @@ describe('Navigate Handler', function() {
   });
 
   it('navigates to Mobile Engage push reporting page', function() {
-    messageHandler.handleMessage({
-      event: 'navigate',
-      data: {
-        target: 'me_push/report',
-        params: {
-          id: 'foo'
-        }
-      },
-      source: {
-        integration_instance_id: 1
+    navigateTo({
+      target: 'me_push/report',
+      params: {
+        id: 'foo'
       }
     });
 
