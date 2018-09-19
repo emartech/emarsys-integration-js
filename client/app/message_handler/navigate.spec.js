@@ -397,4 +397,50 @@ describe('Navigate Handler', function() {
       'id=foo'
     ].join('&'));
   });
+
+  it('navigates to Mobile Engage push editor page', function() {
+    messageHandler.handleMessage({
+      event: 'navigate',
+      data: {
+        target: 'me_push/edit',
+        params: {
+          id: 'foo'
+        }
+      },
+      source: {
+        integration_instance_id: 1
+      }
+    });
+
+    expect(fakeWindow.location.href).to.eql([
+      'bootstrap.php?session_id=SESSIONID',
+      'r=service/index',
+      'service=push-notification',
+      'iframe=show',
+      '#/campaigns/foo'
+    ].join('&'));
+  });
+
+  it('navigates to Mobile Engage push reporting page', function() {
+    messageHandler.handleMessage({
+      event: 'navigate',
+      data: {
+        target: 'me_push/report',
+        params: {
+          id: 'foo'
+        }
+      },
+      source: {
+        integration_instance_id: 1
+      }
+    });
+
+    expect(fakeWindow.location.href).to.eql([
+      'bootstrap.php?session_id=SESSIONID',
+      'r=service/index',
+      'service=push-notification',
+      'iframe=show',
+      '#/reports/foo'
+    ].join('&'));
+  });
 });

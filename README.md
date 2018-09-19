@@ -207,6 +207,8 @@ __Targets available__
 |program/create|AC program creation||
 |trendsreporting/trends|Trend reporting page||
 |trendsreporting/trends/campaign|Trend reporting page for specific campaign|campaign_id|
+|me_push/edit|Mobile Engage push campaign editor|id|
+|me_push/report|Mobile Engage push campaign report|id|
 
 ## Proxy
 
@@ -361,4 +363,16 @@ git checkout production
 git pull --rebase
 git merge origin master
 git push
+```
+
+## Running tests
+
+If you want to run the tests on your machine you can do by executing the following command:
+```bash
+gulp test
+```
+
+If you don't have gulp on your machine you can install by executing the following command:
+```bash
+npm i -g gulp
 ```

@@ -175,6 +175,22 @@ class MessageHandlerNavigate extends AbstractMessageHandler {
         'bootstrap.php?session_id={session_id}',
         'r=tactics',
         'id={id}'
+      ].join('&'),
+
+      'me_push/edit': [
+        'bootstrap.php?session_id={session_id}',
+        'r=service/index',
+        'service=push-notification',
+        'iframe=show',
+        '#/campaigns/{id}'
+      ].join('&'),
+
+      'me_push/report': [
+        'bootstrap.php?session_id={session_id}',
+        'r=service/index',
+        'service=push-notification',
+        'iframe=show',
+        '#/reports/{id}'
       ].join('&')
     };
 
