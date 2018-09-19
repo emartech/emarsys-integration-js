@@ -347,6 +347,18 @@ __Fields__
 
 If you would like to make local changes, you need to run `gulp start`. You can reach the resulting code [on this local URL then](http://localhost:1235/integration.js).
 
+## Running tests
+
+If you want to run the tests on your machine you can do by executing the following command:
+```bash
+gulp test
+```
+
+If you don't have gulp on your machine you can install by executing the following command:
+```bash
+npm i -g gulp
+```
+
 # Deployment
 
 Code is automatically built and deployed whenever there is a new changeset in following branches:
@@ -363,16 +375,4 @@ git checkout production
 git pull --rebase
 git merge origin master
 git push
-```
-
-## Running tests
-
-If you want to run the tests on your machine you can do by executing the following command:
-```bash
-gulp test
-```
-
-If you don't have gulp on your machine you can install by executing the following command:
-```bash
-npm i -g gulp
 ```
