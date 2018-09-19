@@ -23,7 +23,7 @@ describe('Navigate Handler', function() {
     messageHandler.handleMessage({
       event: 'navigate',
       data: {
-        target: target,
+        target,
         params
       },
       source: {
