@@ -19,7 +19,7 @@ describe('Navigate Handler', function() {
     messageHandler = new MessageHandler(fakeWindow, transmitter);
   });
 
-  const navigateTo = ({ target, params }) => {
+  const navigateTo = ({ target, params = {} }) => {
     messageHandler.handleMessage({
       event: 'navigate',
       data: {
@@ -170,22 +170,16 @@ describe('Navigate Handler', function() {
     });
   });
 
-  it('should throw 404 when calling getUrlByTarget with invalid pathname', function() {
+  it('should throw 404 when called with invalid pathname', function() {
     let exceptionThrown;
 
     try {
-      messageHandler.getUrlByTarget('invalid/pathname');
+      navigateTo({ target: 'invalid/pathname' });
     } catch (e) {
       exceptionThrown = e;
     }
 
     expect(exceptionThrown.message).to.eql('Error 404: Unknown pathname');
-  });
-
-  it('should return valid campaign copy url when calling getUrlByTarget', function() {
-    let copyUrl = messageHandler.getUrlByTarget('email_campaigns/copy');
-
-    expect(copyUrl).to.eql('campaignmanager.php?session_id={session_id}&action=copy&copy={campaign_id}');
   });
 
   it('navigates to create campaign with proper params', function() {

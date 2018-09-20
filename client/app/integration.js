@@ -9,6 +9,7 @@ const Transmitter = require('./comm/transmitter');
 const DialogApi = require('./service/dialog_api');
 const DialogFactory = require('./service/dialog_factory');
 const connect = require('./connect');
+const getFullUrlByTarget = require('./message_handler/get_full_url_by_target');
 const messageHandlers = [
   require('./message_handler/alert'),
   require('./message_handler/confirm'),
@@ -44,6 +45,11 @@ const messageHandlers = [
     addMessageHandler: receiver.addMessageHandler.bind(receiver),
     alert: AlertApi.create(transmitter),
     dialog: new DialogApi(transmitter, DialogFactory.create()),
+    getFullUrlByTarget: ({ target, params }) => getFullUrlByTarget({
+      sessionId: global.Emarsys.config.session_id,
+      target,
+      params
+    }),
     unload: {
       initialized: false
     }

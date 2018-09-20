@@ -342,6 +342,20 @@ __Fields__
 |-----|----|---------|
 |selector: String|Selector for ancestor elements of `<a>` elements.|YES|
 
+# Functions available
+
+## getFullUrlByTarget
+
+Get URL by target (same targets available as in navigate message handler), useful for links.
+
+```javascript
+window.Emarsys.integration.getFullUrlByTarget({
+  target: 'me_push/edit',
+  params: {
+    id: 318
+  }
+})
+```
 
 # Development
 
