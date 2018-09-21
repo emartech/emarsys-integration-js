@@ -1,6 +1,6 @@
 'use strict';
 
-const targets = require('./url-targets');
+const targets = require('./url_targets');
 
 const getUrlByTarget = (pathname) => {
   if (pathname in targets) {
