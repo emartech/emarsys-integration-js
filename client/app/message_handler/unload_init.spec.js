@@ -3,6 +3,7 @@
 const consts = require('../consts');
 const FakeWindow = require('../mocks/fake_window');
 const MessageHandler = require('./unload_init');
+const jquery = require('jquery');
 
 describe('UnloadInit Handler', function() {
 
@@ -50,4 +51,40 @@ describe('UnloadInit Handler', function() {
     });
   });
 
+  describe('#handleMessage', function() {
+    const insertLink = (attrs = {}) => jquery('<a>').attr(attrs).appendTo('body');
+    const message = {
+      source: { integration_instance_id: 'lamantin' },
+      data: { selector: 'body' }
+    };
+
+    beforeEach(() => fakeWindow.$ = jquery);
+
+    it('should call confirm navigation when link clicked', function() {
+      fakeWindow.Emarsys.integration.dialog.confirmNavigation = this.sandbox.stub();
+      messageHandler.handleMessage(message);
+
+      insertLink({ href: '#' }).trigger('click');
+
+      expect(fakeWindow.Emarsys.integration.dialog.confirmNavigation).to.have.been.called;
+    });
+
+    it('should not call confirm navigation when link has prevent attribute', function() {
+      fakeWindow.Emarsys.integration.dialog.confirmNavigation = this.sandbox.stub();
+      messageHandler.handleMessage(message);
+
+      insertLink({ href: '#', 'prevent-navigation-confirm': true }).trigger('click');
+
+      expect(fakeWindow.Emarsys.integration.dialog.confirmNavigation).to.not.have.been.called;
+    });
+
+    it('should not call confirm navigation when link has no href', function() {
+      fakeWindow.Emarsys.integration.dialog.confirmNavigation = this.sandbox.stub();
+      messageHandler.handleMessage(message);
+
+      insertLink().trigger('click');
+
+      expect(fakeWindow.Emarsys.integration.dialog.confirmNavigation).to.not.have.been.called;
+    });
+  });
 });

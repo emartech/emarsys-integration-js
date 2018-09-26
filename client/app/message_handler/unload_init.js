@@ -12,14 +12,15 @@ class MessageHandlerUnloadInit extends AbstractMessageHandler {
     const eventNamespace = 'confirm_navigation_' + message.source.integration_instance_id;
     const fakeConfirmMessage = this.getFakeConfirmMessage(message);
 
-    $(this.window).off('beforeunload.' + eventNamespace);
-    $(this.window).on('beforeunload.' + eventNamespace, function() {
+    this.window.$(this.window).off('beforeunload.' + eventNamespace);
+    this.window.$(this.window).on('beforeunload.' + eventNamespace, function() {
       return fakeConfirmMessage.data.body;
     });
 
-    $(message.data.selector)
+    const linksToWatch = 'a[href][target!="_blank"]:not([onclick]):not([prevent-navigation-confirm])';
+    this.window.$(message.data.selector)
       .off('click.' + eventNamespace)
-      .on('click.' + eventNamespace, 'a[href][target!="_blank"]:not([onclick])', (event) => {
+      .on('click.' + eventNamespace, linksToWatch, (event) => {
         if (event.ctrlKey || event.metaKey || event.which === 2 || !event.target.hostname) {
           return;
         }
