@@ -164,8 +164,7 @@ module.exports = {
 
   'tactics/details': [
     'bootstrap.php?session_id={session_id}',
-    'r=tactics',
-    'id={id}'
+    'r=tactics#/?id={id}'
   ].join('&'),
 
   'me_push/edit': [

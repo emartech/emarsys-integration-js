@@ -419,11 +419,8 @@ describe('Navigate Handler', function() {
       }
     });
 
-    expect(fakeWindow.location.href).to.eql([
-      'bootstrap.php?session_id=SESSIONID',
-      'r=tactics',
-      'id=foo'
-    ].join('&'));
+    const expectedUrl = 'bootstrap.php?session_id=SESSIONID&r=tactics#/?id=foo';
+    expect(fakeWindow.location.href).to.eql(expectedUrl);
   });
 
   it('navigates to Mobile Engage push editor page', function() {
