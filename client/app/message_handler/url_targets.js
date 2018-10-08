@@ -158,8 +158,7 @@ module.exports = {
 
   'tactics/list': [
     'bootstrap.php?session_id={session_id}',
-    'r=tactics',
-    'kpi={kpi}'
+    'r=tactics&kpi={kpi}#/?kpi={kpi}'
   ].join('&'),
 
   'tactics/details': [
