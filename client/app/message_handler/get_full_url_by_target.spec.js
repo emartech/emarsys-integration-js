@@ -7,7 +7,7 @@ const targets = {
   'test/second': 'bootstrap.php?session_id={session_id}#/campaigns/{id}/campaigns/{id}'
 };
 
-describe('getFullUrlByTarget', () => {
+describe('getFullUrlByTarget', function() {
   it('should return the right url for the target filled with params', () => {
     const url = getFullUrlByTarget(targets)({ sessionId: 'the_session', target: 'test/first', params: { id: 1 } });
     expect(url).to.eql(
@@ -22,5 +22,11 @@ describe('getFullUrlByTarget', () => {
         'bootstrap.php?session_id=the_session#/campaigns/1/campaigns/1'
       );
     });
+  });
+
+  it('throws exception when called with undefined target', function() {
+    expect(function() {
+      getFullUrlByTarget(targets)({ target: 'undefined' });
+    }).to.throw('Error 404: Unknown pathname');
   });
 });
