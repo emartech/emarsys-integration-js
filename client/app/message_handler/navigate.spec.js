@@ -390,6 +390,7 @@ describe('Navigate Handler', function() {
       data: {
         target: 'tactics/list',
         params: {
+          kpi_fake: 'foo_fake',
           kpi: 'foo'
         }
       },
@@ -398,11 +399,8 @@ describe('Navigate Handler', function() {
       }
     });
 
-    expect(fakeWindow.location.href).to.eql([
-      'bootstrap.php?session_id=SESSIONID',
-      'r=tactics',
-      'kpi=foo'
-    ].join('&'));
+    const expectedUrl = 'bootstrap.php?session_id=SESSIONID&r=tactics&kpi=foo_fake#/?kpi=foo';
+    expect(fakeWindow.location.href).to.eql(expectedUrl);
   });
 
   it('navigates to Tactics details page', function() {
