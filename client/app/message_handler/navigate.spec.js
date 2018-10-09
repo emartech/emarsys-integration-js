@@ -398,8 +398,11 @@ describe('Navigate Handler', function() {
       }
     });
 
-    const expectedUrl = 'bootstrap.php?session_id=SESSIONID&r=tactics&kpi=foo#/?kpi=foo';
-    expect(fakeWindow.location.href).to.eql(expectedUrl);
+    expect(fakeWindow.location.href).to.eql([
+      'bootstrap.php?session_id=SESSIONID',
+      'r=tactics',
+      'kpi=foo'
+    ].join('&'));
   });
 
   it('navigates to Tactics details page', function() {

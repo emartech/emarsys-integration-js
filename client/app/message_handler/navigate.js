@@ -1,7 +1,7 @@
 'use strict';
 
 const AbstractMessageHandler = require('./abstract_message_handler');
-const getFullUrlByTarget = require('./get_full_url_by_target').create();
+const getFullUrlByTarget = require('./get_full_url_by_target');
 
 class MessageHandlerNavigate extends AbstractMessageHandler {
 
