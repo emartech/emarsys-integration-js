@@ -14,7 +14,8 @@ module.exports = {
   ].join('&'),
 
   'email_campaigns/blocks/create': [
-    'bootstrap.php?r=contentBlocks/selector&session_id={session_id}',
+    'bootstrap.php?r=contentBlocks/selector',
+    'session_id={session_id}',
     'mailstream={mailstream}'
   ].join('&'),
 
@@ -133,7 +134,10 @@ module.exports = {
   ].join('&'),
 
   'trendsreporting/trends/campaign': [
-    'repmanager.php?action=analysis&page=1&step=11&session_id={session_id}',
+    'repmanager.php?action=analysis',
+    'page=1',
+    'step=11',
+    'session_id={session_id}',
     'camp_id={campaign_id}'
   ].join('&'),
 
@@ -156,10 +160,11 @@ module.exports = {
     'r=permissionSettings#/roles'
   ].join('&'),
 
-  'tactics/list': [
-    'bootstrap.php?session_id={session_id}',
-    'r=tactics&kpi={kpi}#/?kpi={kpi}'
-  ].join('&'),
+  'tactics/list': 'bootstrap.php?' + [
+    'session_id={session_id}',
+    'r=tactics',
+    'kpi={kpi}'
+  ].join('&') + '#/?kpi={kpi}',
 
   'tactics/details': [
     'bootstrap.php?session_id={session_id}',
