@@ -23,9 +23,7 @@ class MessageHandlerNavigate extends AbstractMessageHandler {
     });
 
     if (this.window.Emarsys.integration.unload.initialized) {
-      let promise = this.window.Emarsys.integration.dialog.confirmNavigation(
-          url,
-          this.getFakeConfirmMessage(message));
+      let promise = this.window.Emarsys.integration.dialog.confirmNavigation(url, this.getFakeConfirmMessage(message));
 
       promise.then(() => this._responseToService(message.data.eventId, true, message.source.integration_instance_id));
       promise.fail(() => this._responseToService(message.data.eventId, false, message.source.integration_instance_id));
@@ -39,9 +37,9 @@ class MessageHandlerNavigate extends AbstractMessageHandler {
 
   _responseToService(eventId, success, integrationInstanceId) {
     this.transmitter.messageToService(
-        'navigate:response',
-        { id: eventId, success: success },
-        integrationInstanceId
+      'navigate:response',
+      { id: eventId, success: success },
+      integrationInstanceId
     );
   }
 
