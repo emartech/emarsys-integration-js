@@ -238,5 +238,11 @@ module.exports = {
   'rti/report': [
     'bootstrap.php?session_id={session_id}',
     'r=eventCenter/index#/reports/{id}/overview'
+  ].join('&'),
+
+  'revenue_attribution/settings': [
+    'bootstrap.php?session_id={session_id}',
+    'r=service',
+    'service=revenue-attribution'
   ].join('&')
 };
