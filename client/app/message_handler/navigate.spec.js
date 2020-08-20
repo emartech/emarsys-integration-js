@@ -476,6 +476,40 @@ describe('Navigate Handler', function() {
     ].join('&'));
   });
 
+  it('navigates to Mobile Engage Inbox editor page', function() {
+    navigateTo({
+      target: 'me_inbox/edit',
+      params: {
+        id: 'foo'
+      }
+    });
+
+    expect(fakeWindow.location.href).to.eql([
+      'bootstrap.php?session_id=SESSIONID',
+      'r=service/index',
+      'service=push-notification',
+      'iframe=show',
+      '#/campaigns/foo'
+    ].join('&'));
+  });
+
+  it('navigates to Mobile Engage Inbox reporting page', function() {
+    navigateTo({
+      target: 'me_inbox/report',
+      params: {
+        id: 'foo'
+      }
+    });
+
+    expect(fakeWindow.location.href).to.eql([
+      'bootstrap.php?session_id=SESSIONID',
+      'r=service/index',
+      'service=push-notification',
+      'iframe=show',
+      '#/reports/inbox/foo'
+    ].join('&'));
+  });
+
   it('navigates to RTI program edit page', function() {
     navigateTo({
       target: 'rti/edit',

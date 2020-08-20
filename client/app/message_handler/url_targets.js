@@ -230,6 +230,22 @@ module.exports = {
     '#/reports/inapp/{id}'
   ].join('&'),
 
+  'me_inbox/edit': [
+    'bootstrap.php?session_id={session_id}',
+    'r=service/index',
+    'service=push-notification',
+    'iframe=show',
+    '#/campaigns/{id}'
+  ].join('&'),
+
+  'me_inbox/report': [
+    'bootstrap.php?session_id={session_id}',
+    'r=service/index',
+    'service=push-notification',
+    'iframe=show',
+    '#/reports/inbox/{id}'
+  ].join('&'),
+
   'rti/edit': [
     'bootstrap.php?session_id={session_id}',
     'r=eventCenter/index#/edit/rti/{id}'
