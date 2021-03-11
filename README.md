@@ -260,7 +260,7 @@ __Targets available__
 |trendsreporting/trends|Trend reporting page||
 |trendsreporting/trends/campaign|Trend reporting page for specific campaign|campaign_id|
 |me_push/edit|Mobile Engage push campaign editor|id|
-|me_push/report|Mobile Engage push campaign report|id|
+|me_push/report|Mobile Engage push campaign report|push internal campaign id|
 |me_push/campaigns|Mobile Engage push campaigns list
 |me_push/inapp-campaigns|Mobile Engage inapp campaigns list
 |me_push/inapp-campaigns/report|Mobile Engage inapp campaign report|id|
