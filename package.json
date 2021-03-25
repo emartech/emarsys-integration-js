@@ -21,7 +21,7 @@
     "jquery": "3.4.0",
     "json-loader": "0.5.4",
     "karma-phantomjs-shim": "1.4.0",
-    "lodash": "4.17.15",
+    "lodash": "4.17.13",
     "node-static": "0.7.7",
     "pre-commit": "1.1.2",
     "q": "1.4.1",
